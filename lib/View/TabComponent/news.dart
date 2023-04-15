@@ -70,10 +70,15 @@ class _NewsScreenState extends ConsumerState<NewsScreen> with Ui, NewsWidget {
             var data = ref.watch(newsFuture);
 
             return data.when(
-                loading: () => const SizedBox(
-                    height: 50,
-                    width: 50,
-                    child: Center(child: CircularProgressIndicator())),
+                loading: () => Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: const [
+                        SizedBox(
+                            height: 20,
+                            width: 20,
+                            child: CircularProgressIndicator()),
+                      ],
+                    ),
                 error: (error, stackTrace) => Text('Error: $error'),
                 data: (data) {
                   return Column(

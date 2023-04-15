@@ -155,11 +155,8 @@ class _SignupScreenState extends State<SignupScreen> with Ui, CommonAuthWidget {
                 onTap: () async {
                   final authj = ref.watch(firebaseAuthProvider);
                   try {
-                    UserCredential userCredential =
-                        await authj.createUserWithEmailAndPassword(
-                            email: 'yemtech0612@gmail.com',
-                            password: 'password');
-                    print(userCredential.user!.email);
+                    await authj.createUserWithEmailAndPassword(
+                        email: email!.inputText!, password: password);
                   } on FirebaseAuthException catch (e) {
                     if (e.code == 'user-not-found') {
                       errorAlert('User not found', context);

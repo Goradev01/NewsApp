@@ -15,7 +15,7 @@ class NewsHelper {
       final dataapi = jsonDecode(r.body)['articles'];
       List<NewData> data = List.generate(
           dataapi.length, (index) => NewData.fromJson(dataapi[index]));
-      print(data);
+
       Map body = {
         'code': r.statusCode,
         'data': data,
